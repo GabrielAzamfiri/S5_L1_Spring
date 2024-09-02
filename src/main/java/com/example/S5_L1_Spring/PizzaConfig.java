@@ -40,12 +40,12 @@ public class PizzaConfig {
 
     @Bean
     public Bevande Lemonade(){
-        return new Bevande("Lemonade", 0.33,128, 1.29);
+        return new Bevande("Lemonade", 1.29,128, 0.33);
     }
 
     @Bean
     public Bevande Water(){
-        return new Bevande("Water", 0.33,0, 1.29);
+        return new Bevande("Water", 1.29,0, 0.33);
     }
 
     @Bean
@@ -87,20 +87,20 @@ public class PizzaConfig {
     @Bean
     public Menu menu(){
         Menu menu = new Menu();
-        menu.addProdotto(margherita());
-        menu.addProdotto(hawaiian());
-        menu.addProdotto(salami());
+        menu.addPizze(margherita());
+        menu.addPizze(hawaiian());
+        menu.addPizze(salami());
 
-        menu.addProdotto(Cheese());
-        menu.addProdotto(Tomato());
-        menu.addProdotto(Ham());
-        menu.addProdotto(Onions());
-        menu.addProdotto(Pineapple());
-        menu.addProdotto(Salami());
+        menu.addTopping(Cheese());
+        menu.addTopping(Tomato());
+        menu.addTopping(Ham());
+        menu.addTopping(Onions());
+        menu.addTopping(Pineapple());
+        menu.addTopping(Salami());
 
-        menu.addProdotto(Lemonade());
-        menu.addProdotto(Water());
-        menu.addProdotto(Wine());
+        menu.addDrink(Lemonade());
+        menu.addDrink(Water());
+        menu.addDrink(Wine());
        return menu;
     }
 }
