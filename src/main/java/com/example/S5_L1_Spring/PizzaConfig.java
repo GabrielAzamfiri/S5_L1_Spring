@@ -7,6 +7,7 @@ import com.example.S5_L1_Spring.entities.Pizza;
 import com.example.S5_L1_Spring.entities.Topping;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 @Configuration // Annotazione OBBLIGATORIA se vogliamo che questa classe venga presa in considerazione all'avvio dell'applicazione
 public class PizzaConfig {
@@ -55,6 +56,10 @@ public class PizzaConfig {
 
 
     @Bean
+    @Scope("prototype") // Annotazione opzionale. Mi serve quando voglio che lo SCOPE NON SIA SINGLETON
+    // SINGLETON = c'è un UNICA COPIA DELL'OGGETTO in tutta l'applicazione. Questo è il valore di default (ed è estremamente utile)
+    // PROTOTYPE = ogni volta che uso .getBean() mi verrà restituito un nuovo oggetto scollegato dal precedente
+    //@Primary // Annotazione per risolvere le ambiguità. Quando ci sarà il dubbio su quale Student scegliere, verrà scelto questo (una sorta di default)
     public Pizza margherita(){
        Pizza margherita = new Pizza("Pizza Margherita", 4.99,1104);
        margherita.addTopping(Tomato());
@@ -65,9 +70,10 @@ public class PizzaConfig {
 
     @Bean
     public Pizza hawaiian(){
-        Pizza hawaiian = new Pizza("Hawaiian Pizza", 6.49,1024);
-        hawaiian.addTopping(Tomato());
-        hawaiian.addTopping(Cheese());
+        Pizza hawaiian = margherita();
+        hawaiian.setNome("Hawaiian Pizza");
+        hawaiian.setPrezzo(6.49);
+        hawaiian.setCalorie(1024);
         hawaiian.addTopping(Ham());
         hawaiian.addTopping(Pineapple());
 
@@ -76,9 +82,10 @@ public class PizzaConfig {
 
     @Bean
     public Pizza salami(){
-        Pizza salami = new Pizza("Salami Pizza", 5.99,1160);
-        salami.addTopping(Tomato());
-        salami.addTopping(Cheese());
+        Pizza salami = margherita();
+        salami.setPrezzo(5.99);
+        salami.setCalorie(1160);
+        salami.setNome("Salami Pizza");
         salami.addTopping(Salami());
 
         return salami;

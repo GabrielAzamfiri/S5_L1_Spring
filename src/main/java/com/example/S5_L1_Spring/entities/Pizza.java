@@ -24,6 +24,8 @@ public class Pizza extends Prodotto{
         this.toppings.add(topping);
     }
 
+
+
     @Override
     public String toString() {
         String toppingList = toppings.isEmpty() ? "" : " (" + toppings.stream().map(topping -> topping.nome).collect(Collectors.joining(", ")) + ")";

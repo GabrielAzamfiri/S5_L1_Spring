@@ -16,7 +16,7 @@ public class S5L1SpringApplication {
 
 		Menu menu = context.getBean(Menu.class);
 
-
+	
 		menu.vediMenu();
 
 

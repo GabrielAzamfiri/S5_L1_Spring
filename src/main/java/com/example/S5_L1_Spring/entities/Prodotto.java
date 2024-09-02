@@ -22,4 +22,28 @@ public abstract class Prodotto {
         this.prezzo = prezzo;
         this.calorie = calorie;
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Double getPrezzo() {
+        return prezzo;
+    }
+
+    public void setPrezzo(Double prezzo) {
+        this.prezzo = prezzo;
+    }
+
+    public Integer getCalorie() {
+        return calorie;
+    }
+
+    public void setCalorie(Integer calorie) {
+        this.calorie = calorie;
+    }
 }
