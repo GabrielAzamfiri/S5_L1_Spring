@@ -32,15 +32,15 @@ public class Menu {
     }
 
     public void vediMenu(){
-        System.out.println("PIZZAS                                                         Calorie             Price");
+        System.out.println("PIZZAS  /  Calorie  /  Price");
         prodottiMenuPizze.forEach(System.out::println);
         System.out.println("\n");
 
-        System.out.println("TOPPINGS                                                         Calorie             Price");
+        System.out.println("TOPPINGS  /  Calorie  /  Price");
         prodottiMenuTopping.forEach(System.out::println);
         System.out.println("\n");
 
-        System.out.println("DRINKS                                                         Calorie             Price");
+        System.out.println("DRINKS  /  Calorie  /  Price");
         prodottiMenuDrink.forEach(System.out::println);
 
 

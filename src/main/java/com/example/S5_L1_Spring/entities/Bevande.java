@@ -19,6 +19,6 @@ public class Bevande extends Prodotto{
     @Override
     public String toString() {
         return
-              nome + "(" + litri + "l)                                                   "  + calorie + "                  " + prezzo ;
+              nome + "(" + litri + "l)  /  "  + calorie + "  /  " + prezzo ;
     }
 }

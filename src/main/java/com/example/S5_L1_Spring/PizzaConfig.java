@@ -1,15 +1,16 @@
 package com.example.S5_L1_Spring;
 
 
-import com.example.S5_L1_Spring.entities.Bevande;
-import com.example.S5_L1_Spring.entities.Menu;
-import com.example.S5_L1_Spring.entities.Pizza;
-import com.example.S5_L1_Spring.entities.Topping;
+import com.example.S5_L1_Spring.entities.*;
+import com.example.S5_L1_Spring.enums.StatoTavolo;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
 
 @Configuration // Annotazione OBBLIGATORIA se vogliamo che questa classe venga presa in considerazione all'avvio dell'applicazione
+@PropertySource("application.properties")
 public class PizzaConfig {
 
     @Bean
@@ -109,5 +110,28 @@ public class PizzaConfig {
         menu.addDrink(Water());
         menu.addDrink(Wine());
        return menu;
+    }
+
+
+    @Bean
+    public String costoCoperto(@Value("${costo.coperto}") String costoCoperto){
+        return costoCoperto;
+    }
+    @Bean
+    public Tavolo tavolo1(){
+        return new Tavolo(1,5, StatoTavolo.LIBERO);
+    }
+
+    @Bean
+    public Tavolo tavolo2(){
+        return new Tavolo(2,10, StatoTavolo.LIBERO);
+    }
+
+    @Bean
+    public Ordine ordine1(@Value("${costo.coperto}") Double costoCoperto){
+        Ordine ordine1 = new Ordine(1,5, tavolo1() , costoCoperto );
+        ordine1.addProdotto(margherita());
+        ordine1.addProdotto(Water());
+        return ordine1;
     }
 }

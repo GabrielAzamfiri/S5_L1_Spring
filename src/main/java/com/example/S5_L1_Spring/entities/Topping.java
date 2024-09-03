@@ -15,6 +15,6 @@ public class Topping extends Prodotto{
 
     @Override
     public String toString() {
-        return  nome + "                                                             " +   prezzo + "                 " +  calorie ;
+        return  nome + "  /  " +   prezzo + "  /  " +  calorie ;
     }
 }

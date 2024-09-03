@@ -30,6 +30,6 @@ public class Pizza extends Prodotto{
     public String toString() {
         String toppingList = toppings.isEmpty() ? "" : " (" + toppings.stream().map(topping -> topping.nome).collect(Collectors.joining(", ")) + ")";
         return
-                nome + toppingList +"                              "+ calorie  +"                " + prezzo;
+                nome + toppingList +"  /  "+ calorie  +"  /  " + prezzo;
     }
 }

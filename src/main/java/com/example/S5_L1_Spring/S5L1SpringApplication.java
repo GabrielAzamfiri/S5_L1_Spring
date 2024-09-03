@@ -1,6 +1,7 @@
 package com.example.S5_L1_Spring;
 
 import com.example.S5_L1_Spring.entities.Menu;
+import com.example.S5_L1_Spring.entities.Ordine;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -19,8 +20,8 @@ public class S5L1SpringApplication {
 	
 		menu.vediMenu();
 
-
-
+		Ordine ordine = context.getBean(Ordine.class);
+		System.out.println(ordine);
 
 	}
 
