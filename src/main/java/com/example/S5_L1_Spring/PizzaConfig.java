@@ -4,10 +4,7 @@ package com.example.S5_L1_Spring;
 import com.example.S5_L1_Spring.entities.*;
 import com.example.S5_L1_Spring.enums.StatoTavolo;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.*;
 
 @Configuration // Annotazione OBBLIGATORIA se vogliamo che questa classe venga presa in considerazione all'avvio dell'applicazione
 @PropertySource("application.properties")
@@ -118,11 +115,16 @@ public class PizzaConfig {
         return costoCoperto;
     }
     @Bean
+    @Primary
+    // Annotazione per risolvere le ambiguità. Quando ci sarà il dubbio su quale Student scegliere, verrà scelto questo (una sorta di default)
     public Tavolo tavolo1(){
         return new Tavolo(1,5, StatoTavolo.LIBERO);
     }
 
     @Bean
+   // @Scope("prototype") // Annotazione opzionale. Mi serve quando voglio che lo SCOPE NON SIA SINGLETON
+    // SINGLETON = c'è un UNICA COPIA DELL'OGGETTO in tutta l'applicazione. Questo è il valore di default (ed è estremamente utile)
+    // PROTOTYPE = ogni volta che uso .getBean() mi verrà restituito un nuovo oggetto scollegato dal precedente
     public Tavolo tavolo2(){
         return new Tavolo(2,10, StatoTavolo.LIBERO);
     }
