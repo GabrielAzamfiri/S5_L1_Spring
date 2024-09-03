@@ -15,13 +15,7 @@ public class S5L1SpringApplication {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(S5L1SpringApplication.class);
 
 
-		Menu menu = context.getBean(Menu.class);
-
-	
-		menu.vediMenu();
-
-		Ordine ordine = context.getBean(Ordine.class);
-		System.out.println(ordine);
+		System.out.println("Fine Run");
 
 	}
 
