@@ -29,6 +29,48 @@ class S5L1SpringApplicationTests {
 		assertEquals(4, result);
 	}
 
+	@ParameterizedTest
+	@CsvSource({"margherita, Pizza Margherita, 4.99, 1104", "hawaiian, Hawaiian Pizza, 6.49, 1024", "salami, Salami Pizza, 5.99, 1160"})
+	public void testParametriPizze(String Pizza, String expectedNome, Double expectedPrezzo, Integer expectedCalorie) {
+
+		Pizza pizza = context.getBean(Pizza, Pizza.class);
+
+		assertEquals(expectedNome, pizza.getNome());
+		assertEquals(expectedPrezzo, pizza.getPrezzo());
+		assertEquals(expectedCalorie, pizza.getCalorie());
+
+		Topping Tomato = context.getBean("Tomato", Topping.class);
+		Topping Cheese = context.getBean("Cheese", Topping.class);
+		switch (Pizza){
+			case "margherita":
+				assertTrue(pizza.getToppings().contains(Tomato));
+				assertTrue(pizza.getToppings().contains(Cheese));
+				break;
+
+			case "hawaiian":
+				Topping Ham = context.getBean("Ham", Topping.class);
+				Topping Pineapple = context.getBean("Pineapple", Topping.class);
+
+				assertTrue(pizza.getToppings().contains(Tomato));
+				assertTrue(pizza.getToppings().contains(Cheese));
+				assertTrue(pizza.getToppings().contains(Ham));
+				assertTrue(pizza.getToppings().contains(Pineapple));
+				break;
+
+			case "salami":
+				Topping Salami = context.getBean("Salami", Topping.class);
+
+				assertTrue(pizza.getToppings().contains(Tomato));
+				assertTrue(pizza.getToppings().contains(Cheese));
+				assertTrue(pizza.getToppings().contains(Salami));
+				break;
+
+		}
+
+	}
+
+
+
 	@Test
 	public void testMargherita() {
 
