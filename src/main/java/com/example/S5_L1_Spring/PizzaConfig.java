@@ -80,10 +80,9 @@ public class PizzaConfig {
 
     @Bean
     public Pizza salami(){
-        Pizza salami = margherita();
-        salami.setPrezzo(5.99);
-        salami.setCalorie(1160);
-        salami.setNome("Salami Pizza");
+        Pizza salami = new Pizza("Salami Pizza", 5.99,1160);
+        salami.addTopping(Tomato());
+        salami.addTopping(Cheese());
         salami.addTopping(Salami());
 
         return salami;
@@ -111,7 +110,7 @@ public class PizzaConfig {
 
 
     @Bean
-    public String costoCoperto(@Value("${costo.coperto}") String costoCoperto){
+    public Double costoCoperto(@Value("${costo.coperto}") Double costoCoperto){
         return costoCoperto;
     }
     @Bean
@@ -130,10 +129,20 @@ public class PizzaConfig {
     }
 
     @Bean
+    @Primary
     public Ordine ordine1(@Value("${costo.coperto}") Double costoCoperto){
         Ordine ordine1 = new Ordine(1,5, tavolo1() , costoCoperto );
         ordine1.addProdotto(margherita());
         ordine1.addProdotto(Water());
         return ordine1;
+    }
+    @Bean
+    public Ordine ordine2(@Value("${costo.coperto}") Double costoCoperto){
+        Ordine ordine2 = new Ordine(2,7, tavolo2() , costoCoperto );
+        ordine2.addProdotto(margherita());
+        ordine2.addProdotto(salami());
+        ordine2.addProdotto(Water());
+
+        return ordine2;
     }
 }
